@@ -10,7 +10,6 @@
             templateUrl: 'foundItems.html',
             scope: {
                 found: '<',
-                loading: '<',
                 onRemove: '&'
             },
             controller: FoundItemsDirectiveController,
