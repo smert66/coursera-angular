@@ -9,7 +9,8 @@
         var ddo = {
             templateUrl: 'foundItems.html',
             scope: {
-                found: '<found',
+                found: '<',
+                loading: '<',
                 onRemove: '&'
             },
             controller: FoundItemsDirectiveController,
@@ -42,14 +43,15 @@
         list.found = [];
         
         list.searchMenuItems = function() {
+            list.found.length = 0;
             var promise = MenuSearchService.getMatchedMenuItems(list.searchTerm);
             promise.then(function (foundItems) {
             list.found = foundItems;
         });
         }
 
-        list.removeItem = function(itemIndex) {
-            MenuSearchService.removeItem(itemIndex);
+        list.removeItem = function(found, itemIndex) {
+            MenuSearchService.removeItem(list.found, itemIndex);
         }
     };
 
@@ -81,8 +83,8 @@
             
         };
 
-        service.removeItem = function (itemIndex) {
-            found.splice(itemIndex, 1);
+        service.removeItem = function (array, itemIndex) {
+            array.splice(itemIndex, 1);
         };
     };
     
