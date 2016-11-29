@@ -16,10 +16,10 @@
         <input type="text" placeholder="search term" class="form-control" ng-model="list.searchTerm">
       </div>
       <div class="form-group narrow-button col-md-3 col-xs-6">
-        <button class="btn btn-primary" ng-click="list.searchMenuItems();">Narrow It Down For Me!</button>
+        <button class="btn btn-primary" ng-click="list.searchMenuItems(list.searchTerm);">Narrow It Down For Me!</button>
       </div>
     </div>
-    <!-- found-items should be implemented as a component -->
+    <div class="col-xs-12 message">{{ list.message }} </div>
     <found-items found="list.found" on-remove="list.removeItem(index)"></found-items>
   </div>
 
